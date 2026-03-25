@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neurodivergence Revived CIC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">
+      <div class="logo-mark">🧠</div>
+      <div>
+        <div class="logo-text-line1">Neurodivergence</div>
+        <div class="logo-text-line2">Revived CIC</div>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li><a onclick="showPage('home')" class="active" id="nav-home">Home</a></li>
+      <li><a onclick="showPage('about')" id="nav-about">About</a></li>
+      <li><a onclick="showPage('services')" id="nav-services">Services</a></li>
+      <li><a onclick="showPage('volunteer')" id="nav-volunteer">Volunteer</a></li>
+      <li><a onclick="showPage('contact')" id="nav-contact">Contact</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" title="Toggle theme">🌙</button>
+      <button class="btn-primary" onclick="showPage('contact')">Get Involved</button>
+      <button class="hamburger" onclick="toggleMobile()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');toggleMobile()">Home</a>
+  <a onclick="showPage('about');toggleMobile()">About Us</a>
+  <a onclick="showPage('services');toggleMobile()">Services</a>
+  <a onclick="showPage('volunteer');toggleMobile()">Volunteer</a>
+  <a onclick="showPage('contact');toggleMobile()">Contact</a>
+</div>
+
+<!-- ===== HOME PAGE ===== -->
+<div class="page active" id="page-home">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          Community Interest Company · UK
+        </div>
+        <h1>
+          Where every<br/>
+          <span class="highlight">neurodivergent</span><br/>
+          mind <span class="highlight-green">thrives</span>
+        </h1>
+        <p class="hero-desc">
+          We empower neurodivergent children, young adults, and their families through advocacy, mentorship, and creative skills development — because every mind deserves the space to flourish.
+        </p>
+        <div class="hero-ctas">
+          <button class="btn-primary btn-large" onclick="showPage('services')">Explore Our Services</button>
+          <button class="btn-ghost btn-large" onclick="showPage('about')">Our Story</button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="stat-cards">
+          <div class="stat-card accent">
+            <div class="stat-icon">🤝</div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">Core Programmes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">👨‍👩‍👧</div>
+            <div class="stat-num">14–35</div>
+            <div class="stat-label">Mentorship Age Range</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">🎨</div>
+            <div class="stat-num">4+</div>
+            <div class="stat-label">Creative Workshops</div>
+          </div>
+          <div class="stat-card accent-green">
+            <div class="stat-icon">💜</div>
+            <div class="stat-num">CIC</div>
+            <div class="stat-label">Impact-Led, Not Profit</div>
+          </div>
+        </div>
+        <div class="hero-quote-card">
+          <div class="quote-accent">"</div>
+          <p class="quote-text">With the right support, every neurodivergent individual can flourish. This is not just our belief — it's our daily work.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Areas -->
+  <section class="section key-areas">
+    <div class="section-inner">
+      <div class="section-tag">What We Do</div>
+      <h2 class="section-title">Three pillars of support</h2>
+      <p class="section-sub">Our work is built around the areas where neurodivergent individuals and their families need support most.</p>
+
+      <div class="areas-grid">
+        <div class="area-card">
+          <div class="area-icon">🛡️</div>
+          <div class="area-title">Parent & Carer Advocacy</div>
+          <p class="area-desc">We walk alongside families — helping navigate schools, healthcare, and social systems. Workshops, support networks, and hands-on guidance so parents never feel alone.</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🌟</div>
+          <div class="area-title">Buddy & Mentorship</div>
+          <p class="area-desc">Pairing neurodivergent young adults (14–35) with neurotypical peer mentors who offer friendship, encouragement, and guidance to build confidence and independence.</p>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">🎨</div>
+          <div class="area-title">Creative Skills Development</div>
+          <p class="area-desc">Fine Art, Music, ICT, and Graphic Design workshops designed to unlock talent, build confidence, and open doors to meaningful careers and self-expression.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Strip -->
+  <section class="section" style="padding: 3rem 2rem;">
+    <div class="section-inner">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; background:linear-gradient(135deg,var(--purple),#7748b8); border-radius:20px; padding:2.5rem 3rem;">
+        <div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#fff;margin-bottom:0.5rem;">Ready to get involved?</h3>
+          <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;">Whether you're a parent, a young adult, or want to volunteer — there's a place for you here.</p>
+        </div>
+        <div style="display:flex;gap:1rem;flex-shrink:0;flex-wrap:wrap;">
+          <button onclick="showPage('volunteer')" style="background:white;color:var(--purple);border:none;padding:0.75rem 1.5rem;border-radius:12px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.95rem;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">Volunteer With Us</button>
+          <button onclick="showPage('contact')" style="background:rgba(255,255,255,0.15);color:white;border:1.5px solid rgba(255,255,255,0.3);padding:0.75rem 1.5rem;border-radius:12px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:0.95rem;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.25)'" onmouseout="this.style.background='rgba(255,255,255,0.15)'">Contact Us</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== ABOUT PAGE ===== -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <div class="about-hero-inner">
+      <div class="section-tag">About Us</div>
+      <h1>Driven by experience.<br/><span style="color:var(--purple)">Fuelled by purpose.</span></h1>
+      <p>We are a community interest company founded on lived experience, dedicated to creating real change for neurodivergent individuals and families across the UK.</p>
+    </div>
+  </div>
+
+  <!-- Mission / Vision / Values summary -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="mvv-grid">
+        <div class="mvv-card">
+          <div class="mvv-icon">🎯</div>
+          <div class="mvv-title">Our Mission</div>
+          <p class="mvv-text">To equip neurodivergent individuals and their families with knowledge, advocacy, and resources — enabling them to navigate their unique journeys with confidence and dignity.</p>
+        </div>
+        <div class="mvv-card">
+          <div class="mvv-icon">🔭</div>
+          <div class="mvv-title">Our Vision</div>
+          <p class="mvv-text">A society where neurodivergent individuals are fully included, with equal opportunities to thrive — where stigma is eliminated and every individual reaches their full potential.</p>
+        </div>
+        <div class="mvv-card">
+          <div class="mvv-icon">💜</div>
+          <div class="mvv-title">What Drives Us</div>
+          <p class="mvv-text">As a CIC, we are not driven by profit but by impact. Every programme, every workshop, every mentorship match is designed around one goal: real, lasting change for real people.</p>
+        </div>
+      </div>
+
+      <div class="section-tag">Core Values</div>
+      <h2 class="section-title" style="margin-bottom:2rem;">What we stand for</h2>
+
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-dot"></div>
+          <div>
+            <div class="value-title">Empowerment</div>
+            <p class="value-desc">Giving parents and individuals the knowledge, skills, and confidence to advocate for themselves and their future.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-dot"></div>
+          <div>
+            <div class="value-title">Inclusion</div>
+            <p class="value-desc">Creating environments where neurodivergent individuals are fully accepted, supported, and valued in society.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-dot"></div>
+          <div>
+            <div class="value-title">Education</div>
+            <p class="value-desc">Providing quality learning in graphic design, ICT, Fine Art and similar courses — fostering talent and career development.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-dot"></div>
+          <div>
+            <div class="value-title">Mentorship & Support</div>
+            <p class="value-desc">Ensuring neurodiverse young adults have buddies and mentors to navigate social, educational, and professional challenges.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-dot"></div>
+          <div>
+            <div class="value-title">Advocacy</div>
+            <p class="value-desc">Standing up for the rights and needs of neurodivergent individuals and families to ensure fair access to resources.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-dot"></div>
+          <div>
+            <div class="value-title">Innovation</div>
+            <p class="value-desc">Using creative and tailored approaches to education, mentorship, and community engagement to address unique needs.</p>
+          </div>
+        </div>
+        <div class="value-card">
+          <div class="value-dot"></div>
+          <div>
+            <div class="value-title">Community & Collaboration</div>
+            <p class="value-desc">Partnering with families, educators, employers, and organisations to build a strong, inclusive support network.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Story -->
+  <div class="founder-section">
+    <div class="founder-inner">
+      <div class="founder-img-wrap">
+        <div class="founder-img-placeholder">
+          <span>👩‍💼</span>
+          <p>Founder's photo</p>
+        </div>
+        <div class="founder-badge">Founder & Director</div>
+      </div>
+      <div class="founder-content">
+        <div class="founder-label">Founder's Story</div>
+        <h2>Born from lived experience, <span style="color:var(--purple)">built with love.</span></h2>
+        <p class="founder-story">
+          Neurodivergence Revived grew out of my journey as a parent to a son on the autism spectrum. Along the way, I realised how much I would have done differently — not only to ease his challenges but also to nurture his creativity and independence sooner. What became clear to me is that every neurodivergent individual has unique strengths and talents waiting to be discovered.
+        </p>
+        <p class="founder-story">
+          The first step was supporting parents, helping them navigate school systems and advocate for their children. Later, I searched for a mentor for my son — a peer who could act as a buddy and role model. That simple idea inspired the vision for Neurodivergence Revived: a place where parents feel empowered and where young people are supported through mentorship, creativity, and opportunities to thrive.
+        </p>
+        <p class="founder-story" style="font-style:italic;border-left:3px solid var(--purple);padding-left:1rem;margin-top:1rem;">
+          "This organisation reflects both personal experience and a belief: with the right support, every neurodivergent individual can flourish."
+        </p>
+        <div class="founder-sig">— Founder, Neurodivergence Revived CIC</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES PAGE ===== -->
+<div class="page" id="page-services">
+  <div class="services-hero">
+    <div class="section-tag">Our Services</div>
+    <h1 style="font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;">How we support <span style="color:var(--purple)">you</span></h1>
+    <p style="font-size:1rem;color:var(--text-muted);line-height:1.75;max-width:580px;margin-bottom:3rem;">From advocacy and mentorship to creative workshops — our programmes are designed around the real needs of neurodivergent individuals and their families.</p>
+  </div>
+
+  <section class="section" style="padding-top:0;">
+    <div class="section-inner">
+      <div class="services-grid">
+
+        <!-- Service 1 -->
+        <div class="service-card">
+          <div class="service-header">
+            <div class="service-icon-lg">🛡️</div>
+            <div>
+              <div class="service-title">Parent, Carer & Individual Support</div>
+              <div class="service-tagline">Navigating the system — together</div>
+            </div>
+          </div>
+          <p class="service-body">We walk alongside families and neurodivergent individuals in navigating the complex systems of education, health, and employment. We help with special needs applications, attend school or multi-agency meetings, and ensure families can access the services they need promptly and confidently. For young adults, we extend our support into college and workplace settings.</p>
+          <div class="service-features">
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Help with special needs (EHCP) applications</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>School and multi-agency meeting attendance</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Access to community services & resources</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Support for young adults in college & work</span>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="showPage('contact')">Request Support</button>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="service-card">
+          <div class="service-header">
+            <div class="service-icon-lg">🌟</div>
+            <div>
+              <div class="service-title">Buddy & Mentorship Programme</div>
+              <div class="service-tagline">Buddy up. Build confidence. Thrive together.</div>
+            </div>
+          </div>
+          <p class="service-body">Our Buddy & Mentorship Programme pairs neurodivergent young adults and adults (ages 14–35) with neurotypical peer mentors of a similar age. Each mentor-buddy provides friendship, encouragement, and guidance — a balanced mix of companionship and support across personal, social, and professional areas.</p>
+          <div class="service-features">
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Carefully matched neurotypical peer mentors</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Confidence & independence building</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Social & communication skills support</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Education & career pathway guidance</span>
+            </div>
+          </div>
+          <div style="background:var(--input-bg);border-radius:12px;padding:1rem 1.25rem;margin-bottom:1.5rem;font-size:0.87rem;color:var(--text-muted);line-height:1.65;">
+            📩 To register, email <a href="/cdn-cgi/l/email-protection#b9d7dccccbd6ddd0cfdccbdedcd7dadccbdccfd0cfdcddf9ded4d8d0d597dad6d4" style="color:var(--purple);font-weight:500;"><span class="__cf_email__" data-cfemail="4d2328383f2229243b283f2a28232e283f283b243b28290d2a202c2421632e2220">[email&#160;protected]</span></a> or use our contact form below. Referrals from partner organisations also welcome.
+          </div>
+          <button class="btn-primary" onclick="showPage('contact')">Join the Programme</button>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="service-card">
+          <div class="service-header">
+            <div class="service-icon-lg">🎨</div>
+            <div>
+              <div class="service-title">Creative & Skills Development Workshops</div>
+              <div class="service-tagline">Unlocking Creativity</div>
+            </div>
+          </div>
+          <p class="service-body">We believe every individual deserves the opportunity to explore their talents and build skills for the future. Our workshops are tailored to the needs of the neurodivergent community — short, practical, and engaging — making learning accessible and enjoyable.</p>
+
+          <div class="workshop-icons">
+            <div class="workshop-pill">🎨 Fine Art</div>
+            <div class="workshop-pill">🎶 Music</div>
+            <div class="workshop-pill">💻 ICT & Digital Skills</div>
+            <div class="workshop-pill">🖌️ Graphic Design</div>
+          </div>
+
+          <div class="service-features">
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Supportive, go-at-your-own-pace environment</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Creative & technical skills for life and career</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Discover hidden talents and develop them</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check">✓</div>
+              <span>Pathways to employment or entrepreneurship</span>
+            </div>
+          </div>
+          <button class="btn-primary" onclick="showPage('contact')">Register Your Interest</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== VOLUNTEER PAGE ===== -->
+<div class="page" id="page-volunteer">
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-tag">Get Involved</div>
+      <h1 class="section-title">Become a Buddy<br/><span style="color:var(--purple)">& Mentor</span></h1>
+
+      <div class="volunteer-hero">
+        <h2>Make a real difference in someone's life</h2>
+        <p>We are building a compassionate community where neurodivergent young people and adults can thrive — and we need caring volunteers to make it happen. Join our Buddy & Mentorship Programme and become the support someone has been waiting for.</p>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" class="vol-grid">
+        <div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:1.25rem;color:var(--text);">Why volunteer with us?</h3>
+          <div class="why-grid" style="grid-template-columns:1fr;">
+            <div class="why-card">
+              <div class="why-icon">💚</div>
+              <div class="why-text">
+                <strong>Meaningful Impact</strong>
+                <p>Make a real and lasting difference in a neurodivergent young person's confidence, independence, and life.</p>
+              </div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">🎓</div>
+              <div class="why-text">
+                <strong>Gain Valuable Experience</strong>
+                <p>Build transferable skills in mentoring, empathy, communication and leadership — great for any career path.</p>
+              </div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">🤝</div>
+              <div class="why-text">
+                <strong>Training Provided</strong>
+                <p>All volunteers receive training and ongoing support to feel confident in their role. No prior experience needed.</p>
+              </div>
+            </div>
+            <div class="why-card">
+              <div class="why-icon">🌐</div>
+              <div class="why-text">
+                <strong>Join a Community</strong>
+                <p>Become part of a like-minded network working towards inclusion, empowerment, and real positive change.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:1.25rem;color:var(--text);">How it works</h3>
+          <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.85rem;flex-shrink:0;">1</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:0.25rem;color:var(--text);">Apply</div>
+                <p style="font-size:0.87rem;color:var(--text-muted);line-height:1.6;">Fill in our volunteer form below. We welcome applicants aged 18+ who are patient, empathetic, and open-minded.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.85rem;flex-shrink:0;">2</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:0.25rem;color:var(--text);">Training</div>
+                <p style="font-size:0.87rem;color:var(--text-muted);line-height:1.6;">Receive training on neurodivergence awareness and how to support your mentee effectively.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--purple);color:white;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.85rem;flex-shrink:0;">3</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:0.25rem;color:var(--text);">Matching</div>
+                <p style="font-size:0.87rem;color:var(--text-muted);line-height:1.6;">We carefully pair you with a neurodivergent individual of a similar age to foster a natural connection.</p>
+              </div>
+            </div>
+            <div style="display:flex;gap:1rem;align-items:flex-start;">
+              <div style="width:32px;height:32px;border-radius:50%;background:var(--green-dim);color:white;display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.85rem;flex-shrink:0;">4</div>
+              <div>
+                <div style="font-family:'DM Sans',sans-serif;font-weight:700;margin-bottom:0.25rem;color:var(--text);">Begin</div>
+                <p style="font-size:0.87rem;color:var(--text-muted);line-height:1.6;">Start your flexible sessions — in person, online, or both. Ongoing support from our team throughout.</p>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn-primary btn-large" onclick="showPage('contact')" style="width:100%;">Apply to Volunteer →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== CONTACT PAGE ===== -->
+<div class="page" id="page-contact">
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-tag">Contact Us</div>
+      <h1 class="section-title">Let's talk</h1>
+      <p class="section-sub">Whether you're a family looking for support, a young adult wanting to join our programmes, or someone wanting to volunteer — we'd love to hear from you.</p>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label">Email Us</div>
+              <div class="contact-value"><a href="/cdn-cgi/l/email-protection#563833232439323f20332431333835332433203f20333216313b373f3a7835393b"><span class="__cf_email__" data-cfemail="a0cec5d5d2cfc4c9d6c5d2c7c5cec3c5d2c5d6c9d6c5c4e0c7cdc1c9cc8ec3cfcd">[email&#160;protected]</span></a></div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">🌐</div>
+            <div>
+              <div class="contact-label">WordPress Site</div>
+              <div class="contact-value"><a href="https://neurodivergencerevived.org" target="_blank" style="color:var(--purple);">neurodivergencerevived.org</a></div>
+            </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon">💬</div>
+            <div>
+              <div class="contact-label">Live Chat</div>
+              <div class="contact-value">Click the chat bubble to speak with Nova, our AI assistant</div>
+            </div>
+          </div>
+
+          <div style="background:rgba(153,105,205,0.08);border:1px solid rgba(153,105,205,0.2);border-radius:14px;padding:1.5rem;margin-top:0.5rem;">
+            <div style="font-family:'DM Sans',sans-serif;font-weight:600;margin-bottom:0.5rem;color:var(--text);">📋 What to include</div>
+            <p style="font-size:0.87rem;color:var(--text-muted);line-height:1.7;">Please let us know: your name, whether you're a parent/carer, young adult, or volunteer enquirer, and a brief description of how we can help.</p>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <h3>Send us a message</h3>
+          <div id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <input type="text" id="f-fname" placeholder="Jane" />
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <input type="text" id="f-lname" placeholder="Smith" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address *</label>
+              <input type="email" id="f-email" placeholder="jane@example.com" />
+            </div>
+            <div class="form-group">
+              <label>I am a...</label>
+              <select id="f-type">
+                <option value="">Select one</option>
+                <option>Parent / Carer</option>
+                <option>Neurodivergent Individual</option>
+                <option>Interested Volunteer</option>
+                <option>Professional / Referrer</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>I'm interested in...</label>
+              <select id="f-service">
+                <option value="">Select a service</option>
+                <option>Parent & Carer Support / Advocacy</option>
+                <option>Buddy & Mentorship Programme</option>
+                <option>Creative & Skills Workshops</option>
+                <option>Volunteering / Becoming a Mentor</option>
+                <option>General Enquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Your Message *</label>
+              <textarea id="f-msg" placeholder="Tell us a little about what you're looking for or how we can help..."></textarea>
+            </div>
+            <button class="btn-primary" style="width:100%;padding:0.9rem;" onclick="submitForm()">Send Message →</button>
+          </div>
+          <div class="form-success" id="form-success">
+            <div class="success-icon">✅</div>
+            <h4>Message sent!</h4>
+            <p>Thank you for reaching out. We'll be in touch with you soon at the email you provided.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-mark">🧠</div>
+          <div>
+            <div>Neurodivergence</div>
+            <div style="font-size:0.65rem;font-weight:400;opacity:0.5;letter-spacing:0.05em;text-transform:uppercase;">Revived CIC</div>
+          </div>
+        </div>
+        <p>A community interest company dedicated to empowering neurodivergent individuals, their families, and caregivers to thrive.</p>
+        <a href="/cdn-cgi/l/email-protection#c7a9a2b2b5a8a3aeb1a2b5a0a2a9a4a2b5a2b1aeb1a2a387a0aaa6aeabe9a4a8aa" style="color:rgba(255,255,255,0.6);font-size:0.85rem;transition:color 0.2s;" onmouseover="this.style.color='#AFD740'" onmouseout="this.style.color='rgba(255,255,255,0.6)'"><span class="__cf_email__" data-cfemail="cca2a9b9bea3a8a5baa9beaba9a2afa9bea9baa5baa9a88caba1ada5a0e2afa3a1">[email&#160;protected]</span></a>
+      </div>
+
+      <div>
+        <div class="footer-heading">Pages</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('home')">Home</a></li>
+          <li><a onclick="showPage('about')">About Us</a></li>
+          <li><a onclick="showPage('services')">Services</a></li>
+          <li><a onclick="showPage('volunteer')">Volunteer</a></li>
+          <li><a onclick="showPage('contact')">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">Our Services</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('services')">Parent & Carer Support</a></li>
+          <li><a onclick="showPage('services')">Buddy & Mentorship</a></li>
+          <li><a onclick="showPage('services')">Creative Workshops</a></li>
+          <li><a onclick="showPage('services')">Advocacy</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-heading">Get Involved</div>
+        <ul class="footer-links">
+          <li><a onclick="showPage('volunteer')">Become a Mentor</a></li>
+          <li><a onclick="showPage('services')">Join a Programme</a></li>
+          <li><a onclick="showPage('contact')">Make a Referral</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#214f4454534e454857445346444f42445344574857444561464c40484d0f424e4c">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Neurodivergence Revived CIC. All rights reserved.</p>
+      <div class="footer-badge">🇬🇧 Registered Community Interest Company</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== CHATBOT ===== -->
+<button class="chat-fab" onclick="toggleChat()" id="chat-fab" aria-label="Open chat">
+  <span id="chat-fab-icon">💬</span>
+  <div class="chat-notif" id="chat-notif"></div>
+</button>
+
+<div class="chat-window" id="chat-window">
+  <div class="chat-header">
+    <div class="chat-avatar">🤖</div>
+    <div class="chat-header-info">
+      <div class="chat-name">Nova · NR Assistant</div>
+      <div class="chat-status">
+        <div class="status-dot"></div>
+        Online · Powered by AI
+      </div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">✕</button>
+  </div>
+
+  <div class="chat-messages" id="chat-messages"></div>
+
+  <div class="quick-replies" id="quick-replies">
+    <button class="quick-reply" onclick="sendQuick('What services do you offer?')">Our services</button>
+    <button class="quick-reply" onclick="sendQuick('How do I join the mentorship programme?')">Mentorship</button>
+    <button class="quick-reply" onclick="sendQuick('How can I volunteer?')">Volunteer</button>
+    <button class="quick-reply" onclick="sendQuick('How can you support parents?')">Parent support</button>
+  </div>
+
+  <div class="chat-input-row">
+    <input class="chat-input" id="chat-input" type="text" placeholder="Ask Nova anything…" onkeydown="if(event.key==='Enter')sendMessage()" />
+    <button class="chat-send" onclick="sendMessage()" id="chat-send-btn">➤</button>
+  </div>
+</div>
+
+<!-- JS loaded at the bottom of body — this is the correct and safe way -->
+<script src="js/main.js"></script>
+</body>
+</html>
