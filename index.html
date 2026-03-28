@@ -11,49 +11,33 @@
 
   <!--
   ============================================================
-  SETUP CHECKLIST — complete these before going live
+  SETUP CHECKLIST — complete before going live
   ============================================================
 
   1. EMAILJS (free — emailjs.com)
-     a) Sign up at https://emailjs.com
-     b) Add Email Service → Gmail → name it anything
-        Copy the Service ID → paste into js/main.js (EMAILJS_SERVICE_ID)
-     c) Create an Email Template. Use these variables in the template body:
-          {{from_name}}  {{from_email}}  {{enquiry_type}}
-          {{service_interest}}  {{message}}
-        Set "To Email" field to: neurodivergencerevived@gmail.com
-        Copy the Template ID → paste into js/main.js (EMAILJS_TEMPLATE_ID)
-     d) Go to Account → API Keys
-        Copy Public Key → paste into js/main.js (EMAILJS_PUBLIC_KEY)
-     e) In Gmail: Settings → Filters → create filter:
-        From: noreply@emailjs.com → Never spam, Always important
+     a) Sign up → Add Email Service → Gmail
+     b) Create Email Template with variables:
+        {{from_name}} {{from_email}} {{enquiry_type}}
+        {{service_interest}} {{message}}
+        Set "To Email": neurodivergencerevived@gmail.com
+     c) Paste Service ID, Template ID, Public Key into js/main.js
 
   2. GOOGLE reCAPTCHA v3 (free — google.com/recaptcha)
-     a) Visit https://www.google.com/recaptcha/admin/create
-     b) Type: reCAPTCHA v3 | Add your domain (use localhost for testing)
-     c) Copy Site Key → replace YOUR_RECAPTCHA_SITE_KEY in TWO places below
-        (the script src and inside js/main.js RECAPTCHA_SITE_KEY constant)
-     d) Secret Key is for server-side — not needed for static sites.
-        reCAPTCHA v3 on static sites acts as a strong bot deterrent.
-        For full verification, consider deploying via Netlify (free) and
-        using a Netlify Function to verify the token server-side.
+     a) Create v3 key for your domain
+     b) Replace YOUR_RECAPTCHA_SITE_KEY below AND in js/main.js
 
-  3. GMAIL SPAM PREVENTION
-     a) In Gmail → Settings → Filters & Blocked Addresses
-        Create filter: From "noreply@emailjs.com" → Never send to Spam
-     b) Add neurodivergencerevived@gmail.com as a contact in Gmail
-        (Gmail trusts known contacts and rarely spams them)
-     c) Ask the first real user to reply — Gmail learns from replies
+  3. IMAGES — place these in the img/ folder:
+     - logo.png       (your official logo)
+     - essie.jpg      (Essie Rewane's photo — used as founder image and Nova avatar)
 
+  4. GMAIL FILTER: From noreply@emailjs.com → Never spam, Always important
   ============================================================
   -->
 
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
   <!-- Google reCAPTCHA v3 — replace YOUR_RECAPTCHA_SITE_KEY -->
   <script src="https://www.google.com/recaptcha/api.js?render=YOUR_RECAPTCHA_SITE_KEY" async defer></script>
-
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
@@ -64,7 +48,9 @@
   <div class="nav-inner">
     <div class="nav-logo" onclick="showPage('home')">
       <div class="logo-mark">
-        <i data-lucide="brain" style="width:20px;height:20px;color:#fff;"></i>
+        <img src="img/logo.png" alt="Neurodivergence Revived CIC logo"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <i data-lucide="brain" style="display:none;width:20px;height:20px;color:#fff;"></i>
       </div>
       <div>
         <div class="logo-text-line1">Neurodivergence</div>
@@ -103,7 +89,6 @@
 <!-- ===== HOME PAGE ===== -->
 <div class="page active" id="page-home">
 
-  <!-- Hero -->
   <section class="hero">
     <div class="hero-blobs">
       <div class="blob blob-1"></div>
@@ -133,30 +118,22 @@
       <div class="hero-visual">
         <div class="stat-cards">
           <div class="stat-card accent">
-            <div class="stat-icon icon-animated">
-              <i data-lucide="heart-handshake"></i>
-            </div>
+            <div class="stat-icon icon-animated"><i data-lucide="heart-handshake"></i></div>
             <div class="stat-num">3</div>
             <div class="stat-label">Core Programmes</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon icon-animated">
-              <i data-lucide="users"></i>
-            </div>
+            <div class="stat-icon icon-animated"><i data-lucide="users"></i></div>
             <div class="stat-num">14–35</div>
             <div class="stat-label">Mentorship Age Range</div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon icon-animated">
-              <i data-lucide="palette"></i>
-            </div>
+            <div class="stat-icon icon-animated"><i data-lucide="palette"></i></div>
             <div class="stat-num">4+</div>
             <div class="stat-label">Creative Workshops</div>
           </div>
           <div class="stat-card accent-green">
-            <div class="stat-icon icon-animated">
-              <i data-lucide="sprout"></i>
-            </div>
+            <div class="stat-icon icon-animated"><i data-lucide="sprout"></i></div>
             <div class="stat-num">CIC</div>
             <div class="stat-label">Impact-Led, Not Profit</div>
           </div>
@@ -169,32 +146,24 @@
     </div>
   </section>
 
-  <!-- Key Areas -->
   <section class="section key-areas">
     <div class="section-inner">
       <div class="section-tag">What We Do</div>
       <h2 class="section-title">Three pillars of support</h2>
       <p class="section-sub">Our work is built around the areas where neurodivergent individuals and their families need support most.</p>
-
       <div class="areas-grid">
         <div class="area-card">
-          <div class="area-icon icon-animated">
-            <i data-lucide="shield-check"></i>
-          </div>
+          <div class="area-icon icon-animated"><i data-lucide="shield-check"></i></div>
           <div class="area-title">Parent & Carer Advocacy</div>
           <p class="area-desc">We walk alongside families — helping navigate schools, healthcare, and social systems. Workshops, support networks, and hands-on guidance so parents never feel alone.</p>
         </div>
         <div class="area-card">
-          <div class="area-icon icon-animated">
-            <i data-lucide="star"></i>
-          </div>
+          <div class="area-icon icon-animated"><i data-lucide="star"></i></div>
           <div class="area-title">Buddy & Mentorship</div>
           <p class="area-desc">Pairing neurodivergent young adults (14–35) with neurotypical peer mentors who offer friendship, encouragement, and guidance to build confidence and independence.</p>
         </div>
         <div class="area-card">
-          <div class="area-icon icon-animated">
-            <i data-lucide="pen-tool"></i>
-          </div>
+          <div class="area-icon icon-animated"><i data-lucide="pen-tool"></i></div>
           <div class="area-title">Creative Skills Development</div>
           <p class="area-desc">Fine Art, Music, ICT, and Graphic Design workshops designed to unlock talent, build confidence, and open doors to meaningful careers and self-expression.</p>
         </div>
@@ -202,10 +171,9 @@
     </div>
   </section>
 
-  <!-- CTA Strip -->
-  <section class="section" style="padding: 3rem 2rem;">
+  <section class="section" style="padding:3rem 2rem;">
     <div class="section-inner">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap; background:linear-gradient(135deg,var(--purple),#7748b8); border-radius:20px; padding:2.5rem 3rem;">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;background:linear-gradient(135deg,var(--purple),#6a3fb5);border-radius:20px;padding:2.5rem 3rem;">
         <div>
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.6rem;color:#fff;margin-bottom:0.5rem;">Ready to get involved?</h3>
           <p style="color:rgba(255,255,255,0.8);font-size:0.95rem;">Whether you're a parent, a young adult, or want to volunteer — there's a place for you here.</p>
@@ -233,23 +201,17 @@
     <div class="section-inner">
       <div class="mvv-grid">
         <div class="mvv-card">
-          <div class="mvv-icon icon-animated">
-            <i data-lucide="target"></i>
-          </div>
+          <div class="mvv-icon icon-animated"><i data-lucide="target"></i></div>
           <div class="mvv-title">Our Mission</div>
           <p class="mvv-text">To equip neurodivergent individuals and their families with knowledge, advocacy, and resources — enabling them to navigate their unique journeys with confidence and dignity.</p>
         </div>
         <div class="mvv-card">
-          <div class="mvv-icon icon-animated">
-            <i data-lucide="telescope"></i>
-          </div>
+          <div class="mvv-icon icon-animated"><i data-lucide="telescope"></i></div>
           <div class="mvv-title">Our Vision</div>
           <p class="mvv-text">A society where neurodivergent individuals are fully included, with equal opportunities to thrive — where stigma is eliminated and every individual reaches their full potential.</p>
         </div>
         <div class="mvv-card">
-          <div class="mvv-icon icon-animated">
-            <i data-lucide="heart"></i>
-          </div>
+          <div class="mvv-icon icon-animated"><i data-lucide="heart"></i></div>
           <div class="mvv-title">What Drives Us</div>
           <p class="mvv-text">As a CIC, we are not driven by profit but by impact. Every programme, every workshop, every mentorship match is designed around one goal: real, lasting change for real people.</p>
         </div>
@@ -257,7 +219,6 @@
 
       <div class="section-tag">Core Values</div>
       <h2 class="section-title" style="margin-bottom:2rem;">What we stand for</h2>
-
       <div class="values-grid">
         <div class="value-card">
           <div class="value-dot"></div>
@@ -317,8 +278,13 @@
     <div class="founder-inner">
       <div class="founder-img-wrap">
         <div class="founder-img-placeholder">
-          <i data-lucide="user-round" style="width:64px;height:64px;color:var(--text-muted);"></i>
-          <p>Founder's photo</p>
+          <img src="img/essie.jpg" alt="Essie Rewane — Founder & Director"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+          <!-- Fallback if image not yet added -->
+          <div class="founder-fallback" style="display:none;flex-direction:column;align-items:center;gap:1rem;">
+            <i data-lucide="user-round" style="width:64px;height:64px;color:var(--text-muted);"></i>
+            <p style="font-size:0.85rem;color:var(--text-muted);">Founder's photo</p>
+          </div>
         </div>
         <div class="founder-badge">Founder & Director</div>
       </div>
@@ -334,7 +300,7 @@
         <p class="founder-story" style="font-style:italic;border-left:3px solid var(--purple);padding-left:1rem;margin-top:1rem;">
           "This organisation reflects both personal experience and a belief: with the right support, every neurodivergent individual can flourish."
         </p>
-        <div class="founder-sig">— Founder, Neurodivergence Revived CIC</div>
+        <div class="founder-sig">— Essie Rewane, Founder, Neurodivergence Revived CIC</div>
       </div>
     </div>
   </div>
@@ -352,12 +318,9 @@
     <div class="section-inner">
       <div class="services-grid">
 
-        <!-- Service 1 -->
         <div class="service-card">
           <div class="service-header">
-            <div class="service-icon-lg icon-animated">
-              <i data-lucide="shield-check"></i>
-            </div>
+            <div class="service-icon-lg icon-animated"><i data-lucide="shield-check"></i></div>
             <div>
               <div class="service-title">Parent, Carer & Individual Support</div>
               <div class="service-tagline">Navigating the system — together</div>
@@ -385,12 +348,9 @@
           <button class="btn-primary" onclick="showPage('contact')">Request Support</button>
         </div>
 
-        <!-- Service 2 -->
         <div class="service-card">
           <div class="service-header">
-            <div class="service-icon-lg icon-animated">
-              <i data-lucide="star"></i>
-            </div>
+            <div class="service-icon-lg icon-animated"><i data-lucide="star"></i></div>
             <div>
               <div class="service-title">Buddy & Mentorship Programme</div>
               <div class="service-tagline">Buddy up. Build confidence. Thrive together.</div>
@@ -421,34 +381,21 @@
           <button class="btn-primary" onclick="showPage('contact')">Join the Programme</button>
         </div>
 
-        <!-- Service 3 -->
         <div class="service-card">
           <div class="service-header">
-            <div class="service-icon-lg icon-animated">
-              <i data-lucide="pen-tool"></i>
-            </div>
+            <div class="service-icon-lg icon-animated"><i data-lucide="pen-tool"></i></div>
             <div>
               <div class="service-title">Creative & Skills Development Workshops</div>
               <div class="service-tagline">Unlocking Creativity</div>
             </div>
           </div>
           <p class="service-body">We believe every individual deserves the opportunity to explore their talents and build skills for the future. Our workshops are tailored to the needs of the neurodivergent community — short, practical, and engaging — making learning accessible and enjoyable.</p>
-
           <div class="workshop-icons">
-            <div class="workshop-pill">
-              <i data-lucide="brush" style="width:14px;height:14px;"></i> Fine Art
-            </div>
-            <div class="workshop-pill">
-              <i data-lucide="music" style="width:14px;height:14px;"></i> Music
-            </div>
-            <div class="workshop-pill">
-              <i data-lucide="monitor" style="width:14px;height:14px;"></i> ICT & Digital Skills
-            </div>
-            <div class="workshop-pill">
-              <i data-lucide="layout-template" style="width:14px;height:14px;"></i> Graphic Design
-            </div>
+            <div class="workshop-pill"><i data-lucide="brush" style="width:14px;height:14px;"></i> Fine Art</div>
+            <div class="workshop-pill"><i data-lucide="music" style="width:14px;height:14px;"></i> Music</div>
+            <div class="workshop-pill"><i data-lucide="monitor" style="width:14px;height:14px;"></i> ICT & Digital Skills</div>
+            <div class="workshop-pill"><i data-lucide="layout-template" style="width:14px;height:14px;"></i> Graphic Design</div>
           </div>
-
           <div class="service-features">
             <div class="feature-item">
               <div class="feature-check"><i data-lucide="check" style="width:11px;height:11px;"></i></div>
@@ -492,36 +439,28 @@
           <h3 style="font-family:'DM Serif Display',serif;font-size:1.2rem;margin-bottom:1.25rem;color:var(--text);">Why volunteer with us?</h3>
           <div class="why-grid" style="grid-template-columns:1fr;">
             <div class="why-card">
-              <div class="why-icon icon-animated">
-                <i data-lucide="leaf"></i>
-              </div>
+              <div class="why-icon icon-animated"><i data-lucide="leaf"></i></div>
               <div class="why-text">
                 <strong>Meaningful Impact</strong>
                 <p>Make a real and lasting difference in a neurodivergent young person's confidence, independence, and life.</p>
               </div>
             </div>
             <div class="why-card">
-              <div class="why-icon icon-animated">
-                <i data-lucide="graduation-cap"></i>
-              </div>
+              <div class="why-icon icon-animated"><i data-lucide="graduation-cap"></i></div>
               <div class="why-text">
                 <strong>Gain Valuable Experience</strong>
                 <p>Build transferable skills in mentoring, empathy, communication and leadership — great for any career path.</p>
               </div>
             </div>
             <div class="why-card">
-              <div class="why-icon icon-animated">
-                <i data-lucide="handshake"></i>
-              </div>
+              <div class="why-icon icon-animated"><i data-lucide="handshake"></i></div>
               <div class="why-text">
                 <strong>Training Provided</strong>
                 <p>All volunteers receive training and ongoing support to feel confident in their role. No prior experience needed.</p>
               </div>
             </div>
             <div class="why-card">
-              <div class="why-icon icon-animated">
-                <i data-lucide="globe"></i>
-              </div>
+              <div class="why-icon icon-animated"><i data-lucide="globe"></i></div>
               <div class="why-text">
                 <strong>Join a Community</strong>
                 <p>Become part of a like-minded network working towards inclusion, empowerment, and real positive change.</p>
@@ -580,25 +519,27 @@
       <div class="contact-grid">
         <div class="contact-info">
           <div class="contact-card">
-            <div class="contact-icon icon-animated">
-              <i data-lucide="mail"></i>
-            </div>
+            <div class="contact-icon icon-animated"><i data-lucide="mail"></i></div>
             <div>
               <div class="contact-label">Email Us</div>
               <div class="contact-value"><a href="mailto:neurodivergencerevived@gmail.com">neurodivergencerevived@gmail.com</a></div>
             </div>
           </div>
           <div class="contact-card">
-            <div class="contact-icon icon-animated">
-              <i data-lucide="message-circle"></i>
+            <div class="contact-icon icon-animated"><i data-lucide="globe"></i></div>
+            <div>
+              <div class="contact-label">Website</div>
+              <div class="contact-value"><a href="https://neurodivergencerevived.org" target="_blank" style="color:var(--purple);">neurodivergencerevived.org</a></div>
             </div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-icon icon-animated"><i data-lucide="message-circle"></i></div>
             <div>
               <div class="contact-label">Live Chat</div>
               <div class="contact-value">Click the chat bubble to speak with Nova, our AI assistant</div>
             </div>
           </div>
-
-          <div style="background:rgba(153,105,205,0.08);border:1px solid rgba(153,105,205,0.2);border-radius:14px;padding:1.5rem;margin-top:0.5rem;">
+          <div style="background:rgba(156,107,209,0.08);border:1px solid rgba(156,107,209,0.2);border-radius:14px;padding:1.5rem;margin-top:0.5rem;">
             <div style="font-family:'DM Sans',sans-serif;font-weight:600;margin-bottom:0.5rem;color:var(--text);display:flex;align-items:center;gap:0.5rem;">
               <i data-lucide="clipboard-list" style="width:16px;height:16px;color:var(--purple);flex-shrink:0;"></i>
               What to include
@@ -610,13 +551,11 @@
         <div class="contact-form-wrap">
           <h3>Send us a message</h3>
           <div id="contact-form">
-
-            <!-- Honeypot — invisible to humans, bots fill it in and get blocked -->
+            <!-- Honeypot — hidden from humans, bots fill it and get blocked -->
             <div class="hp-field" aria-hidden="true">
               <label>Leave this empty</label>
               <input type="text" id="hp-name" name="hp_name" tabindex="-1" autocomplete="off" />
             </div>
-
             <div class="form-row">
               <div class="form-group">
                 <label>First Name *</label>
@@ -662,7 +601,6 @@
             </button>
             <div id="form-error" style="display:none;margin-top:0.75rem;color:#c0392b;font-size:0.87rem;text-align:center;padding:0.5rem;background:rgba(192,57,43,0.08);border-radius:8px;"></div>
           </div>
-
           <div class="form-success" id="form-success">
             <div class="success-icon">
               <i data-lucide="circle-check-big" style="width:52px;height:52px;color:#27ae60;"></i>
@@ -682,8 +620,11 @@
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <div class="logo-mark">
-            <i data-lucide="brain" style="width:20px;height:20px;color:#fff;"></i>
+          <div class="logo-mark" style="background:transparent;padding:0;">
+            <img src="img/logo.png" alt="Neurodivergence Revived CIC"
+                 style="width:36px;height:36px;object-fit:contain;"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <i data-lucide="brain" style="display:none;width:20px;height:20px;color:#fff;"></i>
           </div>
           <div>
             <div>Neurodivergence</div>
@@ -691,9 +632,8 @@
           </div>
         </div>
         <p>A community interest company dedicated to empowering neurodivergent individuals, their families, and caregivers to thrive.</p>
-        <a href="mailto:neurodivergencerevived@gmail.com" style="color:rgba(255,255,255,0.6);font-size:0.85rem;transition:color 0.2s;" onmouseover="this.style.color='#AFD740'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">neurodivergencerevived@gmail.com</a>
+        <a href="mailto:neurodivergencerevived@gmail.com" style="color:rgba(255,255,255,0.6);font-size:0.85rem;transition:color 0.2s;" onmouseover="this.style.color='#b2db40'" onmouseout="this.style.color='rgba(255,255,255,0.6)'">neurodivergencerevived@gmail.com</a>
       </div>
-
       <div>
         <div class="footer-heading">Pages</div>
         <ul class="footer-links">
@@ -704,7 +644,6 @@
           <li><a onclick="showPage('contact')">Contact</a></li>
         </ul>
       </div>
-
       <div>
         <div class="footer-heading">Our Services</div>
         <ul class="footer-links">
@@ -714,7 +653,6 @@
           <li><a onclick="showPage('services')">Advocacy</a></li>
         </ul>
       </div>
-
       <div>
         <div class="footer-heading">Get Involved</div>
         <ul class="footer-links">
@@ -725,7 +663,6 @@
         </ul>
       </div>
     </div>
-
     <div class="footer-bottom">
       <p>© 2025 Neurodivergence Revived CIC. All rights reserved.</p>
       <div class="footer-badge">Registered Community Interest Company · UK</div>
@@ -742,7 +679,12 @@
 <div class="chat-window" id="chat-window">
   <div class="chat-header">
     <div class="chat-avatar">
-      <i data-lucide="bot" style="width:22px;height:22px;color:white;"></i>
+      <img src="img/nova-avatar.jpg" alt="Nova — Neurodivergence Revived Assistant"
+           style="width:100%;height:100%;object-fit:cover;border-radius:50%;"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+      <div style="display:none;width:100%;height:100%;align-items:center;justify-content:center;">
+        <i data-lucide="bot" style="width:22px;height:22px;color:white;"></i>
+      </div>
     </div>
     <div class="chat-header-info">
       <div class="chat-name">Nova · NR Assistant</div>
@@ -751,7 +693,12 @@
         Online · Powered by AI
       </div>
     </div>
-    <button class="chat-close" onclick="toggleChat()">
+    <!-- Clear chat button -->
+    <button class="chat-close" onclick="clearChat()" title="Clear conversation" style="margin-right:4px;">
+      <i data-lucide="rotate-ccw" style="width:15px;height:15px;"></i>
+    </button>
+    <!-- Close button -->
+    <button class="chat-close" onclick="toggleChat()" title="Close">
       <i data-lucide="x" style="width:16px;height:16px;"></i>
     </button>
   </div>
@@ -773,12 +720,7 @@
   </div>
 </div>
 
-<!-- JS -->
 <script src="js/main.js"></script>
-<script>
-  // Init Lucide icons after DOM + main.js are both loaded
-  lucide.createIcons();
-</script>
-
+<script>lucide.createIcons();</script>
 </body>
 </html>
