@@ -1,10 +1,10 @@
 // ============================================================
 // CONFIGURATION — replace these with your real keys
 // ============================================================
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
-const RECAPTCHA_SITE_KEY  = 'YOUR_RECAPTCHA_SITE_KEY';
+const EMAILJS_PUBLIC_KEY  = '';
+const EMAILJS_SERVICE_ID  = '';
+const EMAILJS_TEMPLATE_ID = '';
+const RECAPTCHA_SITE_KEY  = '';
 // ============================================================
 
 // Initialise EmailJS
@@ -23,13 +23,17 @@ function toggleTheme() {
 }
 
 // ===== ROUTING =====
+// Each page is now a separate HTML file — showPage navigates to it
+const PAGE_MAP = {
+  home:      '/',
+  about:     '/about',
+  services:  '/services',
+  volunteer: '/volunteer',
+  contact:   '/contact',
+};
 function showPage(name) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  const page  = document.getElementById('page-' + name);
-  const navEl = document.getElementById('nav-' + name);
-  if (page)  { page.classList.add('active'); window.scrollTo(0, 0); }
-  if (navEl) navEl.classList.add('active');
+  const url = PAGE_MAP[name];
+  if (url) window.location.href = url;
 }
 
 // ===== MOBILE MENU =====
@@ -164,6 +168,9 @@ function getLocalResponse(msg) {
 
   if (m.match(/^(hi|hello|hey|good morning|good afternoon|good evening|hiya|howdy)/i)) {
     return `Hello! 👋 I'm Nova, the Neurodivergence Revived assistant.\n\nI'm here to help you find out about our services, mentorship programme, workshops, or how to volunteer. What brings you here today?`;
+  }
+  if (m.includes('service') || m.includes('what do you offer') || m.includes('what can you do') || m.includes('programmes') || m.includes('programs') || m.includes('offer')) {
+    return `We offer three core services:\n\n🛡️ **Parent & Carer Support** — Help with EHCP applications, school meetings, navigating healthcare and social services, and workplace support for young adults.\n\n🌟 **Buddy & Mentorship Programme** — Neurodivergent young adults (14–35) matched with neurotypical peer mentors for confidence, independence, and social skills.\n\n🎨 **Creative & Skills Workshops** — Fine Art, Music, ICT & Digital Skills, and Graphic Design in a supportive, go-at-your-own-pace environment.\n\nWhich of these would you like to know more about? 😊`;
   }
   if (m.includes('what is') || m.includes('who are') || m.includes('about you') || m.includes('tell me about') || m.includes('what do you do')) {
     return `Neurodivergence Revived CIC is a UK-based community interest company — not-for-profit — dedicated to supporting neurodivergent individuals and their families.\n\nWe offer three core services:\n• 🛡️ Parent & Carer Advocacy\n• 🌟 Buddy & Mentorship (ages 14–35)\n• 🎨 Creative Skills Workshops\n\nFounded by Essie Rewane from lived experience as a parent. Would you like to know more about any of these?`;
@@ -304,14 +311,11 @@ async function callClaude(userMessage) {
   conversationHistory.push({ role: 'user', content: userMessage });
   if (conversationHistory.length > 20) conversationHistory = conversationHistory.slice(-20);
 
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  const response = await fetch('/api/chat.php', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model:      'claude-sonnet-4-20250514',
-      max_tokens: 500,
-      system:     NOVA_CONTEXT,
-      messages:   conversationHistory,
+      messages: conversationHistory,
     }),
   });
 
@@ -405,8 +409,7 @@ function autoGreet(reason) {
   }, 400);
 }
 
-// Auto-greet after 3 minutes
-setTimeout(() => autoGreet('time'), 180000);
+// (moved to DOMContentLoaded)
 
 // Auto-greet when contact page is visible
 window.addEventListener('scroll', () => {
@@ -454,10 +457,35 @@ function toggleChat() {
   }
 }
 
-// Show notification bubble after 4s
-setTimeout(() => {
-  if (!chatOpen && !notifSeen) {
-    const notif = document.getElementById('chat-notif');
-    if (notif) notif.style.display = 'block';
+function clearChat() {
+  const chatMessages = document.getElementById('chat-messages');
+  if (chatMessages) {
+    chatMessages.innerHTML = ''; // Wipes the screen
+    
+    // Optional: Add Nova's welcome message back after clearing
+    setTimeout(() => {
+        addMsg("Conversation cleared. How else can I help you? 💜", 'bot');
+    }, 300);
   }
-}, 4000);
+}
+
+// (moved to DOMContentLoaded)
+// ===== INITIALISE ON PAGE LOAD =====
+document.addEventListener('DOMContentLoaded', function() {
+  // Render all Lucide icons on the page
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // Show chat notif dot after 4s
+  setTimeout(() => {
+    if (!chatOpen && !notifSeen) {
+      const notif = document.getElementById('chat-notif');
+      if (notif) notif.style.display = 'block';
+    }
+  }, 4000);
+
+  // Auto-greet after 3 mins of inactivity
+  setTimeout(() => autoGreet('time'), 180000);
+});
+

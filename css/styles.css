@@ -206,6 +206,9 @@ nav {
 .page { display: none; padding-top: 72px; animation: fadeUp 0.4s ease; }
 .page.active { display: block; }
 
+/* Split-page layout: <main> needs top padding to clear the fixed nav */
+
+
 /* ===== HERO ===== */
 .hero {
   min-height: calc(100vh - 72px);
@@ -351,7 +354,7 @@ nav {
 .area-desc { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); }
 
 /* ===== ABOUT PAGE ===== */
-.about-hero { padding: 4rem 2rem 2rem; background: linear-gradient(160deg, var(--bg) 60%, rgba(156,107,209,0.05)); }
+.about-hero { padding: 3rem 2rem 2rem; background: linear-gradient(160deg, var(--bg) 60%, rgba(156,107,209,0.05)); }
 .about-hero-inner { max-width: 1200px; margin: 0 auto; }
 .about-hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
 .about-hero p { font-size: 1.05rem; line-height: 1.75; color: var(--text-muted); max-width: 620px; }
@@ -402,7 +405,7 @@ nav {
 .founder-sig { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--purple); margin-top: 1.5rem; }
 
 /* ===== SERVICES PAGE ===== */
-.services-hero { padding: 4rem 2rem 3rem; max-width: 1200px; margin: 0 auto; }
+.services-hero { padding: 3rem 2rem 3rem; max-width: 1200px; margin: 0 auto; }
 .services-grid { display: grid; gap: 2rem; }
 .service-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; box-shadow: 0 4px 24px var(--shadow); transition: all 0.3s; }
 .service-card:hover { box-shadow: 0 12px 48px var(--shadow); transform: translateY(-3px); }
@@ -522,7 +525,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.85); padding: 4rem 2
   bottom: 6rem; right: 2rem;
   z-index: 200;
   width: 380px;
-  max-height: 580px;
+  max-height: min(580px, calc(100vh - 7rem));
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -545,7 +548,10 @@ footer { background: var(--dark); color: rgba(255,255,255,0.85); padding: 4rem 2
   align-items: center;
   gap: 0.85rem;
   color: white;
-  flex-shrink: 0;  /* prevents header from disappearing */
+  flex-shrink: 0; /* prevents header from disappearing */
+  position: sticky;
+  top: 0;
+  z-index: 10;
   min-height: 68px;
 }
 .chat-avatar {
@@ -706,6 +712,10 @@ footer { background: var(--dark); color: rgba(255,255,255,0.85); padding: 4rem 2
 /* ===== HONEYPOT ===== */
 .hp-field { position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none; }
 
+
+
+
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 900px) {
   .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
@@ -717,6 +727,7 @@ footer { background: var(--dark); color: rgba(255,255,255,0.85); padding: 4rem 2
   .founder-inner { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
   .service-features { grid-template-columns: 1fr; }
+  .vol-grid { grid-template-columns: 1fr !important; }
 }
 @media (max-width: 640px) {
   .nav-links { display: none; }
@@ -731,4 +742,62 @@ footer { background: var(--dark); color: rgba(255,255,255,0.85); padding: 4rem 2
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== PAGE LAYOUT — split page build ===== */
+/* Single source of truth for padding and chat */
+
+/* .page kept for SPA compatibility but not active in split build */
+.page { display: none; }
+.page.active { display: block; }
+
+/* All pages are <main> — pad top to clear the 72px fixed nav */
+main {
+  padding-top: 88px;
+  min-height: 100vh;
+}
+
+/* Hero sits inside main so needs slightly less padding */
+main .hero {
+  min-height: calc(100vh - 88px);
+}
+
+/* ===== CHAT WINDOW — anchored so header never goes off screen ===== */
+.chat-window {
+  /* Anchor from both bottom AND top so it can't overflow the viewport */
+  bottom: 6rem;
+  top: auto;
+  max-height: calc(100vh - 8rem);
+}
+
+/* Header always visible — never scrolls away */
+.chat-header {
+  flex-shrink: 0;
+  position: relative; /* not sticky — sticky inside overflow:hidden does nothing */
+}
+
+/* Messages area scrolls, everything else stays put */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0; /* critical — allows flex child to shrink below content size */
+}
+
+/* ===== PAGE FADE IN ===== */
+@keyframes fadeInPage {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+main { animation: fadeInPage 0.35s ease; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  main { padding-top: 80px; }
+  main .hero { min-height: calc(100vh - 80px); }
+  .chat-window {
+    width: calc(100vw - 2rem);
+    right: 1rem;
+    bottom: 5.5rem;
+    max-height: calc(100vh - 7rem);
+  }
 }
