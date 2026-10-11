@@ -166,14 +166,29 @@ You are Nova, a warm and empathetic AI assistant for Neurodivergence Revived CIC
 function getLocalResponse(msg) {
   const m = msg.toLowerCase();
 
+  if (m.includes('referral') || m.includes('refer someone') ||
+      m.includes('make a referral') || m.includes('professional referral') ||
+      m.includes('commissioned support') || m.includes('refer a client')) {
+    return `We welcome enquiries from schools, professionals, social workers, and partner organisations about referrals to Neurodivergence Revived CIC.
+
+    We can discuss the person's goals, support needs, suitability for our programmes, and possible referral arrangements.
+
+    Please use the Contact page or email info@neurodivergencerevived.org or neurodivergencerevived@gmail.com to start the conversation. Please avoid sending detailed health information until an appropriate way to share it has been agreed. 🤝`;
+  }
+
+
   if (m.match(/^(hi|hello|hey|good morning|good afternoon|good evening|hiya|howdy)/i)) {
     return `Hello! 👋 I'm Nova, the Neurodivergence Revived assistant.\n\nI'm here to help you find out about our services, mentorship programme, workshops, or how to volunteer. What brings you here today?`;
   }
   if (m.includes('service') || m.includes('what do you offer') || m.includes('what can you do') || m.includes('programmes') || m.includes('programs') || m.includes('offer')) {
-    return `We offer three core services:\n\n🛡️ **Parent & Carer Support** — Help with EHCP applications, school meetings, navigating healthcare and social services, and workplace support for young adults.\n\n🌟 **Buddy & Mentorship Programme** — Neurodivergent young adults (14–35) matched with neurotypical peer mentors for confidence, independence, and social skills.\n\n🎨 **Creative & Skills Workshops** — Fine Art, Music, ICT & Digital Skills, and Graphic Design in a supportive, go-at-your-own-pace environment.\n\nWhich of these would you like to know more about? 😊`;
+    return `We offer three core services:\n\n🛡️ **Parent & Carer Support** — Help with EHCP applications, school meetings, and navigating education, health, and social services.
+    🌟 **Buddy & Mentorship Programme** — Support for neurodivergent young adults aged 14–35, with a focus on confidence, independence, and social skills.
+    🎨 **Creative & Skills Workshops** — Fine Art, Music, ICT & Digital Skills, and Graphic Design in a supportive environment.
+    🤝 **Professional Referrals & Commissioned Support** — Enquiries from schools, professionals, and organisations about referral options and support arrangements.
+    Which of these would you like to know more about? 😊`;
   }
   if (m.includes('what is') || m.includes('who are') || m.includes('about you') || m.includes('tell me about') || m.includes('what do you do')) {
-    return `Neurodivergence Revived CIC is a UK-based community interest company — not-for-profit — dedicated to supporting neurodivergent individuals and their families.\n\nWe offer three core services:\n• 🛡️ Parent & Carer Advocacy\n• 🌟 Buddy & Mentorship (ages 14–35)\n• 🎨 Creative Skills Workshops\n\nFounded by Essie Rewane from lived experience as a parent. Would you like to know more about any of these?`;
+    return `Neurodivergence Revived CIC is a UK-based community interest company — not-for-profit — dedicated to supporting neurodivergent individuals and their families.\n\nWe offer four areas of support:\n• 🛡️ Parent & Carer Advocacy\n• 🌟 Buddy & Mentorship (ages 14–35)\n• 🎨 Creative Skills Workshops\n• 🤝 Professional Referrals & Commissioned Support\n\nFounded by Essie Rewane from lived experience as a parent. Would you like to know more about any of these?`;
   }
   if (m.includes('ehcp') || m.includes('education') || m.includes('school') || m.includes('sen') || m.includes('special needs') || m.includes('statement')) {
     return `We can help with that. Our Parent & Carer Support service includes:\n\n✅ Help with EHCP and special needs applications\n✅ Attending school meetings alongside you\n✅ Navigating multi-agency processes\n✅ Making sure your child's needs are properly represented\n\nYou don't have to face the system alone. 💜 Drop us a message via the contact form or email neurodivergencerevived@gmail.com — we'd love to talk.`;
@@ -215,17 +230,30 @@ function getLocalResponse(msg) {
     return `You're so welcome! 😊 That's what we're here for.\n\nIf there's anything else you'd like to know, don't hesitate to ask or use the contact form. We're always happy to help. 💜`;
   }
 
-  // No match — return null to trigger Claude API
-  return null;
+
+  // No keyword match — provide a helpful contact fallback.
+  return "I may not have the right answer for that question yet. Please contact the Neurodivergence Revived team through the Contact page or email info@neurodivergencerevived.org or neurodivergencerevived@gmail.com. Please avoid sharing sensitive health or personal details in this chat.";
+
 }
 
-// ---- Render markdown-style formatting ----
+
+ // ---- Render markdown-style formatting safely ----
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 function renderMarkdown(text) {
-  return text
+  return escapeHTML(text)
     .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.*?)\*/g, '<em>$1</em>')
     .replace(/\n/g, '<br>');
 }
+
 
 // ---- Add a message bubble ----
 function addMsg(text, sender) {
@@ -347,20 +375,16 @@ async function sendMessage() {
   await new Promise(resolve => setTimeout(resolve, delay));
   removeTypingIndicator();
 
-  let reply = getLocalResponse(text);
 
-  if (!reply) {
-    try {
-      reply = await callClaude(text);
-    } catch (err) {
-      console.error('Claude error:', err);
-      reply = "I'm having a little trouble connecting right now. Please email us at neurodivergencerevived@gmail.com and we'll get back to you promptly! 💜";
-    }
-  } else {
-    conversationHistory.push({ role: 'user', content: text });
-    conversationHistory.push({ role: 'assistant', content: reply });
-    if (conversationHistory.length > 20) conversationHistory = conversationHistory.slice(-20);
+  const reply = getLocalResponse(text);
+
+  conversationHistory.push({ role: 'user', content: text });
+  conversationHistory.push({ role: 'assistant', content: reply });
+
+  if (conversationHistory.length > 20) {
+    conversationHistory = conversationHistory.slice(-20);
   }
+
 
   addMsg(reply, 'bot');
   isTyping = false;
