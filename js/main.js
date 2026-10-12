@@ -7,18 +7,23 @@ const EMAILJS_TEMPLATE_ID = '';
 const RECAPTCHA_SITE_KEY  = '';
 // ============================================================
 
-// Initialise EmailJS
-emailjs.init(EMAILJS_PUBLIC_KEY);
+// Initialise EmailJS only if the SDK is present on this page.
+// (The privacy / about / services pages don't load the EmailJS SDK.)
+if (typeof emailjs !== 'undefined') {
+  emailjs.init(EMAILJS_PUBLIC_KEY);
+}
 
 // ===== THEME =====
 let darkMode = false;
 function toggleTheme() {
   darkMode = !darkMode;
   document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
-  const icon = document.getElementById('theme-icon');
-  if (icon) {
-    icon.setAttribute('data-lucide', darkMode ? 'sun' : 'moon');
-    lucide.createIcons();
+
+  const btn = document.getElementById('theme-btn');
+  if (btn) {
+    // Rebuild the button's contents with a fresh <i> so Lucide renders cleanly
+    btn.innerHTML = `<i data-lucide="${darkMode ? 'sun' : 'moon'}" style="width:18px;height:18px;"></i>`;
+    if (typeof lucide !== 'undefined') lucide.createIcons();
   }
 }
 
@@ -258,6 +263,7 @@ function renderMarkdown(text) {
 // ---- Add a message bubble ----
 function addMsg(text, sender) {
   const body = document.getElementById('chat-messages');
+  if (!body) return;
   const wrap = document.createElement('div');
   wrap.className = `msg ${sender === 'user' ? 'msg-user' : 'msg-bot'}`;
   const time = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -317,10 +323,13 @@ function removeTypingIndicator() {
 
 // ---- Clear chat ----
 function clearChat() {
+  // Bail out if there's no chat widget on this page
+  if (!document.getElementById('chat-messages')) return;
+
   conversationHistory = [];
   chatInitiated = false;
   const body = document.getElementById('chat-messages');
-  if (body) body.innerHTML = '';
+  body.innerHTML = '';
   const qr = document.getElementById('quick-replies');
   if (qr) qr.style.display = 'flex';
   setTimeout(() => {
@@ -403,6 +412,7 @@ function hideQuickReplies() {
 
 // ---- Auto-greet triggers ----
 function autoGreet(reason) {
+  if (!document.getElementById('chat-window')) return; 
   if (chatInitiated || chatOpen) return;
 
   chatOpen = true;
@@ -478,18 +488,6 @@ function toggleChat() {
       const input = document.getElementById('chat-input');
       if (input) input.focus();
     }, 350);
-  }
-}
-
-function clearChat() {
-  const chatMessages = document.getElementById('chat-messages');
-  if (chatMessages) {
-    chatMessages.innerHTML = ''; // Wipes the screen
-    
-    // Optional: Add Nova's welcome message back after clearing
-    setTimeout(() => {
-        addMsg("Conversation cleared. How else can I help you? 💜", 'bot');
-    }, 300);
   }
 }
 
