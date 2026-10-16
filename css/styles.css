@@ -753,13 +753,13 @@ footer { background: var(--dark); color: rgba(255,255,255,0.85); padding: 4rem 2
 
 /* All pages are <main> — pad top to clear the 72px fixed nav */
 main {
-  padding-top: 88px;
+  padding-top: 72px;
   min-height: 100vh;
 }
 
 /* Hero sits inside main so needs slightly less padding */
 main .hero {
-  min-height: calc(100vh - 88px);
+  min-height: calc(100vh - 72px);
 }
 
 /* ===== CHAT WINDOW — anchored so header never goes off screen ===== */
@@ -792,8 +792,8 @@ main { animation: fadeInPage 0.35s ease; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
-  main { padding-top: 80px; }
-  main .hero { min-height: calc(100vh - 80px); }
+  main { padding-top: 72px; }
+  main .hero { min-height: calc(100vh - 72px); }
   .chat-window {
     width: calc(100vw - 2rem);
     right: 1rem;

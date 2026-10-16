@@ -18,6 +18,7 @@ let darkMode = false;
 function toggleTheme() {
   darkMode = !darkMode;
   document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  localStorage.setItem('nr-theme', darkMode ? 'dark' : 'light');
 
   const btn = document.getElementById('theme-btn');
   if (btn) {
@@ -126,7 +127,7 @@ You are Nova, a warm and empathetic AI assistant for Neurodivergence Revived CIC
 - UK-based, not-for-profit — driven by impact, not profit
 - Registered Community Interest Company (CIC)
 
-# THREE CORE SERVICES
+# FOUR CORE SERVICES
 
 ## 1. Parent, Carer & Individual Support / Advocacy
 - Help with EHCP (Education, Health and Care Plan) and special needs applications
@@ -146,6 +147,13 @@ You are Nova, a warm and empathetic AI assistant for Neurodivergence Revived CIC
 - Fine Art, Music, ICT & Digital Skills, Graphic Design
 - Short, practical, accessible, go-at-your-own-pace
 - Pathways to employment or entrepreneurship
+
+## 4. Professional Referrals & Commissioned Support
+- Welcomes enquiries from schools, professionals, social workers, and partner organisations
+- Referral form emailed following enquiry, then assessment of goals, strengths and support needs
+- Careful mentor matching based on age, interests, personality, communication style
+- Programme runs ~12 weeks, progress monitored, outcome summary available with consent
+- Contact to discuss referral process and fees
 
 # VOLUNTEERING
 - Volunteers aged 18+ needed to become mentor-buddies
@@ -222,9 +230,6 @@ function getLocalResponse(msg) {
   if (m.includes('contact') || m.includes('get in touch') || m.includes('reach') || m.includes('email') || m.includes('how do i')) {
     return `The easiest ways to reach us:\n\n📧 **Email**: neurodivergencerevived@gmail.com\n📋 **Contact form**: Available on the Contact page\n🌐 **Website**: neurodivergencerevived.org\n\nWe'll always get back to you as soon as we can. No question is too small. 💜`;
   }
-  if (m.includes('refer') || m.includes('referral') || m.includes('professional') || m.includes('organisation') || m.includes('worker')) {
-    return `We welcome referrals from schools, healthcare professionals, social workers, and partner organisations — especially for the Buddy & Mentorship Programme.\n\nEmail us at neurodivergencerevived@gmail.com with a brief overview and we'll take it from there. 🤝`;
-  }
   if (m.includes('where') || m.includes('location') || m.includes('based') || m.includes('uk') || m.includes('england') || m.includes('in person') || m.includes('online')) {
     return `We're a UK-based organisation. Our sessions and support are available both in-person and online, depending on the programme and what works best for you.\n\nFor specific location details, email neurodivergencerevived@gmail.com and we'll help. 🇬🇧`;
   }
@@ -234,7 +239,9 @@ function getLocalResponse(msg) {
   if (m.includes('thank') || m.includes('thanks') || m.includes('cheers') || m.includes('appreciate')) {
     return `You're so welcome! 😊 That's what we're here for.\n\nIf there's anything else you'd like to know, don't hesitate to ask or use the contact form. We're always happy to help. 💜`;
   }
-
+  if (m.includes('privacy') || m.includes('gdpr') || m.includes('data protection') || m.includes('my data')) {
+    return `We take your privacy seriously. You can read our full Privacy Notice here: /privacy.html\n\nIt explains what information we collect through the website, how it is used, and your rights. If you have any questions, email info@neurodivergencerevived.org. 💜`;
+  }
 
   // No keyword match — provide a helpful contact fallback.
   return "I may not have the right answer for that question yet. Please contact the Neurodivergence Revived team through the Contact page or email info@neurodivergencerevived.org or neurodivergencerevived@gmail.com. Please avoid sharing sensitive health or personal details in this chat.";

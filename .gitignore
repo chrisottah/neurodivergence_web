@@ -1,0 +1,22 @@
+# Secrets and environment
+.env
+.env.local
+.env.*
+!.env.example
+
+# PHP error logs
+error_log
+*.log
+
+# Namecheap parking page (server-side only)
+parking-page.shtml
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo

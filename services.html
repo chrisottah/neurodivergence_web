@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Our Services | Neurodivergence Revived CIC</title>
-  <meta name="description" content="Our Services — Parent & Carer Advocacy, Buddy & Mentorship Programme, and Creative Skills Workshops." />
+  <meta name="description" content="Our Services — Parent & Carer Advocacy, Buddy & Mentorship Programme, Creative Skills Workshops, and Professional Referrals." />
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,14 +79,6 @@
     </div>
   </div>
 </nav>
-
-<div class="mobile-menu" id="mobile-menu">
-  <a onclick="showPage('home');toggleMobile()">Home</a>
-  <a onclick="showPage('about');toggleMobile()">About Us</a>
-  <a onclick="showPage('services');toggleMobile()">Services</a>
-  <a onclick="showPage('volunteer');toggleMobile()">Volunteer</a>
-  <a onclick="showPage('contact');toggleMobile()">Contact</a>
-</div>
 
 <div class="mobile-menu" id="mobile-menu">
   <a href="/">Home</a>
@@ -205,17 +197,33 @@
           </div>
           <button class="btn-primary" onclick="window.location='/contact'">Register Your Interest</button>
         </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <i data-lucide="handshake"></i>
+        <div class="service-card" id="referral">
+          <div class="service-header">
+            <div class="service-icon-lg icon-animated"><i data-lucide="heart-handshake"></i></div>
+            <div>
+              <div class="service-title">Professional Referrals &amp; Commissioned Support</div>
+              <div class="service-tagline">Partnering with professionals to support neurodivergent individuals</div>
+            </div>
           </div>
-          <h3>Professional Referrals &amp; Commissioned Support</h3>
-          <p>We welcome enquiries from schools, professionals and organisations supporting neurodivergent young people and adults. Contact us to discuss support goals, suitability for our programmes and possible referral or commissioned-support arrangements.</p>
-          <ul class="service-features">
-            <li>For professionals, schools and partner organisations</li>
-            <li>Discuss individual goals and support needs</li>
-            <li>Referral arrangements discussed individually</li>
-          </ul>
+          <p class="service-body">We welcome referrals from professionals and organisations supporting neurodivergent young people and adults. Following an enquiry, a referral form is emailed to the referring professional for completion. We assess the individual's goals, strengths and support needs, then carefully match them with a trained volunteer mentor — considering factors such as age, interests, personality and communication style wherever possible. The programme normally runs for approximately 12 weeks, with progress monitored throughout and an outcome summary available to the referring organisation where appropriate and with consent. Organisations wishing to refer or commission our service can contact us to discuss the referral process and fees.</p>
+          <div class="service-features">
+            <div class="feature-item">
+              <div class="feature-check"><i data-lucide="check" style="width:11px;height:11px;"></i></div>
+              <span>Referrals from schools, health, social care &amp; voluntary sector</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check"><i data-lucide="check" style="width:11px;height:11px;"></i></div>
+              <span>Formal referral form and assessment process</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check"><i data-lucide="check" style="width:11px;height:11px;"></i></div>
+              <span>Careful mentor matching based on individual needs</span>
+            </div>
+            <div class="feature-item">
+              <div class="feature-check"><i data-lucide="check" style="width:11px;height:11px;"></i></div>
+              <span>12-week programme with progress monitoring &amp; outcome summary</span>
+            </div>
+          </div>
           <button class="btn-primary" onclick="window.location='/contact'">Discuss a Referral</button>
         </div>
 
@@ -269,13 +277,12 @@
           <li><a href="/volunteer">Become a Mentor</a></li>
           <li><a href="/services">Join a Programme</a></li>
           <li><a href="/contact">Make a Referral</a></li>
-          <li><a href="/privacy.html">Privacy Notice</a></li>
           <li><a href="mailto:info@neurodivergencerevived.org">info@neurodivergencerevived.org</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Neurodivergence Revived CIC. All rights reserved.</p>
+      <p>© 2025 Neurodivergence Revived CIC. All rights reserved. · <a href="/privacy.html" style="color:rgba(255,255,255,0.55);text-decoration:underline;text-underline-offset:2px;">Privacy Notice</a></p>
       <div class="footer-badge">Registered Community Interest Company · UK</div>
     </div>
   </div>
@@ -342,7 +349,5 @@
   }
 </script>
 
-</body>
-</html>
 </body>
 </html>
